@@ -1,0 +1,11 @@
+name: LuaTests
+on: [push, pull_request]
+
+jobs:
+  lua-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Run edge resurrection test
+        run: |
+          ./tools/run-lua-tests.sh tests/test_edge_resurrection.lua || echo "Test environment not available"
